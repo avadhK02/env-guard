@@ -63,7 +63,7 @@ export function handleInit(): void {
  */
 export function handleSet(args: string[]): void {
   if (args.length === 0) {
-    console.error('Error: Usage: env-guard set KEY=value');
+    console.error('Error: Usage: secure-env-vault set KEY=value');
     process.exit(1);
   }
   
@@ -84,7 +84,7 @@ export function handleSet(args: string[]): void {
   }
   
   if (!lockFileExists()) {
-    console.error(`Error: ${ENV_LOCK} not found. Run 'env-guard init' first.`);
+    console.error(`Error: ${ENV_LOCK} not found. Run 'secure-env-vault init' first.`);
     process.exit(1);
   }
   
@@ -102,7 +102,7 @@ export function handleSet(args: string[]): void {
  */
 export function handleList(): void {
   if (!lockFileExists()) {
-    console.error(`Error: ${ENV_LOCK} not found. Run 'env-guard init' first.`);
+    console.error(`Error: ${ENV_LOCK} not found. Run 'secure-env-vault init' first.`);
     process.exit(1);
   }
   

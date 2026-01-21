@@ -1,5 +1,5 @@
 {
-  "name": "env-guard",
+  "name": "secure-env-vault",
   "version": "1.0.0",
   "description": "Secure encrypted environment variable manager - AES-256-GCM local secrets manager, dotenv alternative with encryption at rest",
   "type": "module",
@@ -12,7 +12,8 @@
     }
   },
   "bin": {
-    "env-guard": "./dist/bin/env-guard.js"
+    "secure-env-vault": "./dist/bin/env-guard.js",
+    "env-vault": "./dist/bin/env-guard.js"
   },
   "scripts": {
     "build": "tsc",

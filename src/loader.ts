@@ -6,7 +6,7 @@ import { loadSecrets } from './store.js';
  * 
  * @example
  * ```ts
- * import { loadEnv } from 'env-guard';
+ * import { loadEnv } from 'secure-env-vault';
  * 
  * loadEnv();
  * 

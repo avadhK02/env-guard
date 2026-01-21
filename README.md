@@ -1,16 +1,16 @@
-# env-guard
+# secure-env-vault
 
-[![npm version](https://img.shields.io/npm/v/env-guard.svg)](https://www.npmjs.com/package/env-guard)
-[![npm downloads](https://img.shields.io/npm/dm/env-guard.svg)](https://www.npmjs.com/package/env-guard)
+[![npm version](https://img.shields.io/npm/v/secure-env-vault.svg)](https://www.npmjs.com/package/secure-env-vault)
+[![npm downloads](https://img.shields.io/npm/dm/secure-env-vault.svg)](https://www.npmjs.com/package/secure-env-vault)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18.0.0-green.svg)](https://nodejs.org/)
 
 **Secure, encrypted, local-only environment variable and secrets manager for Node.js developers.**
 
-Traditional `.env` files store secrets in plaintext, creating security risks in version control, shared environments, and production deployments. env-guard provides a secure dotenv alternative that encrypts your environment variables at rest using AES-256-GCM, ensuring secrets never exist in plaintext on disk.
+Traditional `.env` files store secrets in plaintext, creating security risks in version control, shared environments, and production deployments. secure-env-vault provides a secure dotenv alternative that encrypts your environment variables at rest using AES-256-GCM, ensuring secrets never exist in plaintext on disk.
 
-## Why env-guard?
+## Why secure-env-vault?
 
 Managing secure environment variables is a common challenge for Node.js developers. Standard `.env` files expose several security vulnerabilities:
 
@@ -20,7 +20,7 @@ Managing secure environment variables is a common challenge for Node.js develope
 - **Log exposure**: Plaintext secrets can appear in application logs and error messages
 - **Compliance gaps**: Many security policies require encryption at rest
 
-env-guard solves these problems by providing a local secrets manager that encrypts your environment variables before storing them. Unlike cloud-based solutions, env-guard works entirely offline with no external dependencies, making it ideal for local-first security workflows.
+secure-env-vault solves these problems by providing a local secrets manager that encrypts your environment variables before storing them. Unlike cloud-based solutions, secure-env-vault works entirely offline with no external dependencies, making it ideal for local-first security workflows.
 
 ## Key Features
 
@@ -37,13 +37,13 @@ env-guard solves these problems by providing a local secrets manager that encryp
 ## Installation
 
 ```bash
-npm install env-guard
+npm install secure-env-vault
 ```
 
 For global CLI access:
 
 ```bash
-npm install -g env-guard
+npm install -g secure-env-vault
 ```
 
 ## Quick Start
@@ -53,7 +53,7 @@ npm install -g env-guard
 Create an encrypted `.env.lock` file in your project:
 
 ```bash
-env-guard init
+secure-env-vault init
 ```
 
 This creates the encrypted storage file and automatically adds `.env` and `.env.lock` to your `.gitignore`.
@@ -63,9 +63,9 @@ This creates the encrypted storage file and automatically adds `.env` and `.env.
 Encrypt and store your environment variables:
 
 ```bash
-env-guard set API_KEY=your-secret-api-key
-env-guard set DATABASE_URL=postgres://localhost/mydb
-env-guard set JWT_SECRET=your-jwt-secret-token
+secure-env-vault set API_KEY=your-secret-api-key
+secure-env-vault set DATABASE_URL=postgres://localhost/mydb
+secure-env-vault set JWT_SECRET=your-jwt-secret-token
 ```
 
 The CLI never displays secret values, only confirmation messages.
@@ -75,7 +75,7 @@ The CLI never displays secret values, only confirmation messages.
 View all stored secret keys without exposing values:
 
 ```bash
-env-guard list
+secure-env-vault list
 ```
 
 Output:
@@ -91,7 +91,7 @@ Stored keys:
 Load encrypted secrets into your application using the `loadEnv()` function:
 
 ```typescript
-import { loadEnv } from 'env-guard';
+import { loadEnv } from 'secure-env-vault';
 
 // Load all encrypted secrets into process.env
 loadEnv();
@@ -127,7 +127,7 @@ app.listen(port, () => {
 Create `lib/env.ts`:
 
 ```typescript
-import { loadEnv } from 'env-guard';
+import { loadEnv } from 'secure-env-vault';
 
 loadEnv();
 
@@ -148,7 +148,7 @@ import { env } from '@/lib/env';
 
 ## Security Model
 
-env-guard uses industry-standard cryptography to protect your secrets.
+secure-env-vault uses industry-standard cryptography to protect your secrets.
 
 ### Encryption
 
@@ -180,9 +180,9 @@ This means:
 - Secret values are never logged or displayed by the CLI
 - No network calls or external dependencies
 
-## Comparison: env-guard vs dotenv
+## Comparison: secure-env-vault vs dotenv
 
-| Feature | dotenv | env-guard |
+| Feature | dotenv | secure-env-vault |
 |---------|--------|-----------|
 | Storage format | Plaintext | Encrypted (AES-256-GCM) |
 | Git safety | Manual `.gitignore` setup | Automatic configuration |
@@ -192,9 +192,9 @@ This means:
 | Local-only | Yes | Yes |
 | Zero dependencies | No | Yes |
 
-## When to Use env-guard
+## When to Use secure-env-vault
 
-env-guard is ideal when:
+secure-env-vault is ideal when:
 
 - You need encrypted storage for sensitive environment variables
 - You work on shared machines or in team environments
@@ -231,11 +231,11 @@ env-guard is open-source. You can audit the code, understand the encryption impl
 
 ### Can I share encrypted secrets between team members?
 
-No. env-guard uses machine-specific and project-specific key derivation. Secrets encrypted on one machine cannot be decrypted on another, even in the same project. This is by design for security. For team sharing, consider using a separate secrets management solution or sharing decryption keys through a secure channel.
+No. secure-env-vault uses machine-specific and project-specific key derivation. Secrets encrypted on one machine cannot be decrypted on another, even in the same project. This is by design for security. For team sharing, consider using a separate secrets management solution or sharing decryption keys through a secure channel.
 
 ### What happens if I move my project to a different machine?
 
-You'll need to re-encrypt your secrets on the new machine. The encryption keys are derived from the OS username and project path, so they differ between machines. You can export secrets from the old machine (by temporarily decrypting them) and re-encrypt them on the new machine using `env-guard set`.
+You'll need to re-encrypt your secrets on the new machine. The encryption keys are derived from the OS username and project path, so they differ between machines. You can export secrets from the old machine (by temporarily decrypting them) and re-encrypt them on the new machine using `secure-env-vault set`.
 
 ### Is it safe to commit `.env.lock` to version control?
 
@@ -243,11 +243,11 @@ Yes. The `.env.lock` file contains only encrypted data. Without the encryption k
 
 ### How does this compare to cloud secrets managers?
 
-env-guard is designed for local development and single-machine use. Cloud secrets managers (like AWS Secrets Manager, HashiCorp Vault) provide features like centralized management, access control, audit logs, and team collaboration. env-guard focuses on local-first security with zero external dependencies. Choose based on your needs: local development vs. production infrastructure.
+secure-env-vault is designed for local development and single-machine use. Cloud secrets managers (like AWS Secrets Manager, HashiCorp Vault) provide features like centralized management, access control, audit logs, and team collaboration. secure-env-vault focuses on local-first security with zero external dependencies. Choose based on your needs: local development vs. production infrastructure.
 
-### Can I use env-guard in production?
+### Can I use secure-env-vault in production?
 
-env-guard is designed primarily for local development and single-machine scenarios. For production environments, consider using dedicated secrets management solutions that provide features like centralized access control, audit logging, and team collaboration. However, if your production setup matches the local-first model (single machine, no team sharing needed), env-guard can work.
+secure-env-vault is designed primarily for local development and single-machine scenarios. For production environments, consider using dedicated secrets management solutions that provide features like centralized access control, audit logging, and team collaboration. However, if your production setup matches the local-first model (single machine, no team sharing needed), secure-env-vault can work.
 
 ## License
 
