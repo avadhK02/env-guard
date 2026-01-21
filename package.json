@@ -1,7 +1,7 @@
 {
   "name": "env-guard",
   "version": "1.0.0",
-  "description": "Secure, encrypted, local-only environment variable manager for developers",
+  "description": "Secure encrypted environment variable manager - AES-256-GCM local secrets manager, dotenv alternative with encryption at rest",
   "type": "module",
   "main": "./dist/loader.js",
   "types": "./dist/loader.d.ts",
@@ -25,14 +25,51 @@
     "env",
     "environment",
     "variables",
+    "secrets",
+    "secrets-manager",
+    "secrets-management",
+    "secure-env",
+    "secure-environment",
+    "encrypted-env",
+    "encrypted-environment",
+    "encrypted-secrets",
+    "env-encryption",
+    "env-security",
+    "dotenv",
+    "dotenv-alternative",
+    "secure-dotenv",
+    "local-secrets",
+    "local-secrets-manager",
+    "local-only",
+    "no-cloud",
+    "offline-secrets",
+    "aes-256",
+    "aes-256-gcm",
     "encryption",
     "security",
-    "dotenv",
-    "secrets",
-    "cli"
+    "node-secrets",
+    "nodejs-secrets",
+    "typescript",
+    "cli",
+    "zero-dependencies"
   ],
-  "author": "",
+  "author": {
+    "name": "Avadh",
+    "url": "https://github.com/avadhK02"
+  },
   "license": "MIT",
+  "homepage": "https://github.com/avadhK02/env-guard#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avadhK02/env-guard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/avadhK02/env-guard/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/avadhK02"
+  },
   "engines": {
     "node": ">=18.0.0"
   },
@@ -46,4 +83,3 @@
     "typescript": "^5.3.0"
   }
 }
-
