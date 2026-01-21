@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Secure encrypted environment variable manager - AES-256-GCM local secrets manager, dotenv alternative with encryption at rest",
   "type": "module",
-  "main": "./dist/loader.js",
-  "types": "./dist/loader.d.ts",
+  "main": "./dist/src/loader.js",
+  "types": "./dist/src/loader.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/loader.d.ts",
-      "default": "./dist/loader.js"
+      "types": "./dist/src/loader.d.ts",
+      "default": "./dist/src/loader.js"
     }
   },
   "bin": {

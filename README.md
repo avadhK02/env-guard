@@ -53,7 +53,7 @@ npm install -g secure-env-vault
 Create an encrypted `.env.lock` file in your project:
 
 ```bash
-secure-env-vault init
+npx secure-env-vault init
 ```
 
 This creates the encrypted storage file and automatically adds `.env` and `.env.lock` to your `.gitignore`.
@@ -63,9 +63,9 @@ This creates the encrypted storage file and automatically adds `.env` and `.env.
 Encrypt and store your environment variables:
 
 ```bash
-secure-env-vault set API_KEY=your-secret-api-key
-secure-env-vault set DATABASE_URL=postgres://localhost/mydb
-secure-env-vault set JWT_SECRET=your-jwt-secret-token
+npx secure-env-vault set API_KEY=your-secret-api-key
+npx secure-env-vault set DATABASE_URL=postgres://localhost/mydb
+npx secure-env-vault set JWT_SECRET=your-jwt-secret-token
 ```
 
 The CLI never displays secret values, only confirmation messages.
@@ -75,7 +75,7 @@ The CLI never displays secret values, only confirmation messages.
 View all stored secret keys without exposing values:
 
 ```bash
-secure-env-vault list
+npx secure-env-vault list
 ```
 
 Output:
