@@ -6,3 +6,19 @@ dist/
 .DS_Store
 *.tsbuildinfo
 
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
